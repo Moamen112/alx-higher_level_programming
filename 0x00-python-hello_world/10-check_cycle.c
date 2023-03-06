@@ -17,7 +17,7 @@ int check_cycle(listint_t *list)
 	move_one = list;
 	move_two = list->next;
 
-	if (move_two != NULL && move_two->next != NULL)
+	while (move_two != NULL && move_two->next != NULL && move_one != NULL)
 	{
 		if (move_two == move_one)
 			return (1);
