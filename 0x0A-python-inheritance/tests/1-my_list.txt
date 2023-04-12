@@ -1,7 +1,3 @@
-Test Cases for MyList Class
-
-The following test cases ensure the correct functionality of the MyList class.
-
 1. Check for module docstring:
     Input:
         m = __import__("1-my_list").__doc__
