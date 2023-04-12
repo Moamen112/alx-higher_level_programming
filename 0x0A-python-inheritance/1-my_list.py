@@ -8,7 +8,6 @@ class MyList(list):
     """
     A subclass of list that adds a method for printing a sorted list.
     """
-
     def __init__(self):
         """Initializes the object."""
         super().__init__()
