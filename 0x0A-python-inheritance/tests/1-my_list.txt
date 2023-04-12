@@ -1,103 +1,78 @@
-1. Check for module docstring:
-    Input:
-        m = __import__("1-my_list").__doc__
-        len(m) > 1
-    Expected Output:
-        True
+Checking for module docstring:
+         >>> u = __import__("1-my_list").__doc__
+         >>> len(u) > 1
+         True
 
-2. Check for class docstring:
-    Input:
-        c = __import__("1-my_list").MyList.__doc__
-        len(c) > 1
-    Expected Output:
-        True
+Checking for class docstring:
+         >>> u = __import__("1-my_list").MyList.__doc__
+         >>> len(u) > 1
+         True
 
-3. Check for method docstring:
-    Input:
-        mod = __import__("1-my_list").MyList.print_sorted.__doc__
-        len(mod) > 1
-    Expected Output:
-        True
+Checking for method docstring:
+	  >>> u = __import__("1-my_list").MyList.print_sorted.__doc__
+	  >>> len(u) > 1
+	  True
 
-4. Check that MyList inherits from list:
-    Input:
-        issubclass(MyList, list)
-    Expected Output:
-        True
+Checking that MyList inherits from list:
+	  >>> issubclass(MyList, list)
+	  True
 
-5. Check for empty list:
-    Input:
-        l = MyList()
-        l.print_sorted()
-    Expected Output:
-        []
+Checking for empty list:
+	  >>> u = MyList()
+	  >>> u.print_sorted()
+	  []
 
-6. Check that appending works:
-    Input:
-        l = MyList()
-        l.append(1)
-        l.append(2)
-        l.append(3)
-        l.append(4)
-        print(l)
-    Expected Output:
-        [1, 2, 3, 4]
+Checking that appendng works:
+	  >>> u.append(1)
+	  >>> u.append(2)
+	  >>> u.append(3)
+	  >>> u.append(4)
+	  >>> print(u)
+	  [1, 2, 3, 4]
 
-7. Check for list already in correct order:
-    Input:
-        l.print_sorted()
-    Expected Output:
-        [1, 2, 3, 4]
+Checking for list already in correct order:
+	  >>> u.print_sorted()
+	  [1, 2, 3, 4]
 
-8. Check for reversed order list:
-    Input:
-        l = MyList()
-        l.append(4)
-        l.append(3)
-        l.append(2)
-        l.append(1)
-        print(l)
-        l.print_sorted()
-        print(l)
-    Expected Output:
-        [4, 3, 2, 1]
-        [1, 2, 3, 4]
-        [4, 3, 2, 1]
+Checking for reversed order list:
+	  >>> u = MyList()
+	  >>> u.append(4)
+	  >>> u.append(3)
+	  >>> u.append(2)
+	  >>> u.append(1)
+	  >>> print(u)
+	  [4, 3, 2, 1]
+	  >>> u.print_sorted()
+	  [1, 2, 3, 4]
+	  >>> print(u)
+	  [4, 3, 2, 1]
 
-9. Check for one negative number:
-    Input:
-        l.append(-1)
-        l.append(5)
-        print(l)
-        l.print_sorted()
-        print(l)
-    Expected Output:
-        [4, 3, 2, 1, -1, 5]
-        [-1, 1, 2, 3, 4, 5]
-        [4, 3, 2, 1, -1, 5]
+Checking for one negative number:
+	  >>> u.append(-1)
+	  >>> u.append(5)
+	  >>> print(u)
+	  [4, 3, 2, 1, -1, 5]
+	  >>> u.print_sorted()
+	  [-1, 1, 2, 3, 4, 5]
+	  >>> print(u)
+	  [4, 3, 2, 1, -1, 5]
 
-10. Check for all negative numbers:
-    Input:
-        l = MyList()
-        l.append(-10)
-        l.append(-1)
-        l.append(-7)
-        l.append(-2)
-        l.append(-8)
-        print(l)
-        l.print_sorted()
-        print(l)
-    Expected Output:
-        [-10, -1, -7, -2, -8]
-        [-10, -8, -7, -2, -1]
-        [-10, -1, -7, -2, -8]
+Checking for all negative numbers:
+	  >>> u = MyList()
+	  >>> u.append(-10)
+	  >>> u.append(-1)
+	  >>> u.append(-7)
+	  >>> u.append(-2)
+	  >>> u.append(-8)
+	  >>> print(u)
+	  [-10, -1, -7, -2, -8]
+	  >>> u.print_sorted()
+	  [-10, -8, -7, -2, -1]
+	  >>> print(u)
+          [-10, -1, -7, -2, -8]
 
-11. Check for too many arguments:
-    Input:
-        try:
-            l.print_sorted(1)
-        except TypeError as e:
-            print(e)
-    Expected Output:
-        'print_sorted() takes 1 positional argument but 2 were given'
-
+Checking for too many arguments:
+	  >>> u.print_sorted(1)
+	  Traceback (most recent call last):
+	  ...
+	  TypeError: print_sorted() takes 1 positional argument but 2 were given
