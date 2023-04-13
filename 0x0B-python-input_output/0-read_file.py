@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """Module to read a text file."""
 
-def read_file(filename: str = ""):
+
+def read_file(filename=""):
     """Reads a text file and prints its content to the standard output.
-    
+
     Args:
-        file_name (str): The name of the text file to read. Default to empty string.
-        
+        file_name (str): The name of the text file to read.
+        Default to empty string.
+
     Returns:
         None
     """
