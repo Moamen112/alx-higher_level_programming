@@ -30,56 +30,68 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """Get the private instance width attribute."""
+        """Width getter"""
+
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Set the private instance width attribute."""
-        if not isinstance(value, int):
+        """Width setter"""
+
+        if type(value) != int:
             raise TypeError("width must be an integer")
-        if value <= 0:
+        elif value <= 0:
             raise ValueError("width must be > 0")
-        self.__width = value
+        else:
+            self.__width = value
 
     @property
     def height(self):
-        """Get the private instance height attribute."""
+        """Height getter"""
+
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Set the private instance height attribute."""
-        if not isinstance(value, int):
+        """Height setter"""
+
+        if type(value) != int:
             raise TypeError("height must be an integer")
-        if value <= 0:
+        elif value <= 0:
             raise ValueError("height must be > 0")
-        self.__height = value
+        else:
+            self.__height = value
 
     @property
     def x(self):
-        """Get the private instance x attribute."""
+        """X getter"""
+
         return self.__x
 
     @x.setter
     def x(self, value):
-        """Set the private instance x attribute."""
-        if not isinstance(value, int):
+        """X setter"""
+
+        if type(value) != int:
             raise TypeError("x must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("x must be >= 0")
-        self.__x = value
+        else:
+            self.__x = value
 
     @property
     def y(self):
-        """Get the private instance y attribute."""
+        """Y getter"""
+
         return self.__y
 
     @y.setter
     def y(self, value):
-        """Set the private instance y attribute."""
-        if not isinstance(value, int):
+        """Y setter"""
+
+        if type(value) != int:
             raise TypeError("y must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("y must be >= 0")
-        self.__y = value
+        else:
+            self.__y = value
