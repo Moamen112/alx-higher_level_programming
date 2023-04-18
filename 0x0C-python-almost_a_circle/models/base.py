@@ -39,9 +39,11 @@ class Base:
         Args:
             list_objs (list): A list of instances who inherits of Base.
         """
-        if list_objs is None:
-            list_objs = []
         filename = cls.__name__ + ".json"
-        with open(filename, mode="w", encoding="utf-8") as f:
-            json_str = cls.to_json_string([obj.to_dictionary() for obj in list_objs])
-            f.write(json_str)
+        with open(filename, "w") as jsonfile:
+            if list_objs is None:
+                jsonfile.write("[]")
+            else:
+                list_objs = [o.to_dictionary() for o in list_objs]
+                jsonfile.write(Base.to_json_string(list_objs))
+
