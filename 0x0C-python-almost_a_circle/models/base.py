@@ -52,14 +52,13 @@ class Base:
         """Deserialize a JSON string and return a Python list.
 
         Args:
-            json_str (str): A JSON string representation of a list of dictionaries.
+            json_str (str): A JSON string representation of
+            a list of dictionaries.
 
         Returns:
             If json_str is None or empty - an empty list.
             Otherwise - the Python list represented by json_str.
         """
         if json_str is None or json_str == "[]":
-            # Return an empty list if the json_str is None or an empty list string.
             return []
-        # Otherwise, deserialize the JSON string and return the resulting Python list.
         return json.loads(json_str)
