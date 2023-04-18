@@ -111,6 +111,16 @@ class Rectangle(Base):
             # Print x number of spaces before the '#' characters in each row
             print(" " * self.x + "#" * self.width)
 
+    def to_dictionary(self):
+        """Return the dictionary representation for the Rectangle."""
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y
+        }
+
     def __str__(self):
         """Return the string representation of a Rectangle instance"""
 
@@ -128,13 +138,3 @@ class Rectangle(Base):
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
-
-     def to_dictionary(self):
-        """Return the dictionary representation for the Rectangle."""
-        return {
-            "id": self.id,
-            "width": self.width,
-            "height": self.height,
-            "x": self.x,
-            "y": self.y
-        }
