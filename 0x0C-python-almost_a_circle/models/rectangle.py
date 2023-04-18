@@ -102,10 +102,14 @@ class Rectangle(Base):
         return self.width * self.height
 
     def display(self):
-        """Prints in stdout the Rectangle instance with the character #"""
-
+        """Print the Rectangle instance with the character '#'."""
+        # Print y number of new lines before the rectangle
+        for i in range(self.y):
+            print()
+        # Print the rectangle row by row
         for i in range(self.height):
-            print("#" * self.width)
+            # Print x number of spaces before the '#' characters in each row
+            print(" " * self.x + "#" * self.width)
 
     def __str__(self):
         """Return the string representation of a Rectangle instance"""
