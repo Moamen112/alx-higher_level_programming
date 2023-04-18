@@ -100,3 +100,90 @@ class Base:
                 return [cls.create(**attrs_dict) for attrs_dict in list_dicts]
         except IOError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, object_list):
+        """Write a list of objects to a CSV file in the format of the class.
+
+        Args:
+            object_list (list): A list of objects of the current class.
+
+        Writes to a file named `<cls.__name__>.csv`.
+        """
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w", newline="") as csvfile:
+            if object_list is None or object_list == []:
+                csvfile.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                for obj in object_list:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Return a list of objects instantiated
+        from a CSV file of the class.
+
+        Reads from a file named `<cls.__name__>.csv`.
+
+        Returns:
+            If the file does not exist - an empty list.
+            Otherwise - a list of instantiated objects.
+        """
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, "r", newline="") as csv_file:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                dict_reader = csv.DictReader(csv_file, fieldnames=fieldnames)
+                list_dicts = [dict([k, int(v)] for k, v in d.items())
+                              for d in dict_reader]
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
+            return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw Rectangles and Squares using the turtle module.
+        Args:
+            list_rectangles (list): A list of Rectangle objects to draw.
+            list_squares (list): A list of Square objects to draw.
+        """
+        turtle_instance = turtle.Turtle()
+        turtle_instance.screen.bgcolor("#b7312c")
+        turtle_instance.pensize(3)
+        turtle_instance.shape("turtle")
+
+        turtle_instance.color("#ffffff")
+        for rectangle in list_rectangles:
+            turtle_instance.showturtle()
+            turtle_instance.up()
+            turtle_instance.goto(rectangle.x, rectangle.y)
+            turtle_instance.down()
+            for i in range(2):
+                turtle_instance.forward(rectangle.width)
+                turtle_instance.left(90)
+                turtle_instance.forward(rectangle.height)
+                turtle_instance.left(90)
+            turtle_instance.hideturtle()
+
+        turtle_instance.color("#b5e3d8")
+        for square in list_squares:
+            turtle_instance.showturtle()
+            turtle_instance.up()
+            turtle_instance.goto(square.x, square.y)
+            turtle_instance.down()
+            for i in range(2):
+                turtle_instance.forward(square.width)
+                turtle_instance.left(90)
+                turtle_instance.forward(square.height)
+                turtle_instance.left(90)
+            turtle_instance.hideturtle()
+
+        turtle.exitonclick()
