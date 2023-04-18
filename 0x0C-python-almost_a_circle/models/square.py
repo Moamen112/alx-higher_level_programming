@@ -31,6 +31,15 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
+    def to_dictionary(self):
+        """Return the dictionary representation for the Square."""
+        return {
+            "id": self.id,
+            "size": self.width,
+            "x": self.x,
+            "y": self.y
+        }
+
     def __str__(self):
         """Return the string representation of a Square instance."""
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y,
@@ -45,12 +54,3 @@ class Square(Rectangle):
         elif kwargs:
             for key, val in kwargs.items():
                 setattr(self, key, val)
-
-    def to_dictionary(self):
-        """Return the dictionary representation for the Square."""
-        return {
-            "id": self.id,
-            "size": self.width,
-            "x": self.x,
-            "y": self.y
-        }
