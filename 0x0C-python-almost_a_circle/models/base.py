@@ -64,20 +64,39 @@ class Base:
         return json.loads(json_str)
 
     @classmethod
-def create(cls, **attrs_dict):
-    """Instantiate a class with attributes specified in a dictionary.
+    def create(cls, **attrs_dict):
+        """Instantiate a class with attributes specified in a dictionary.
 
-    Args:
-        **attrs_dict (dict): Key/value pairs of
-        attributes to initialize the class with.
+        Args:
+            **attrs_dict (dict): Key/value pairs of
+            attributes to initialize the class with.
 
-    Returns:
-        A new instance of the class with the specified attributes.
+        Returns:
+            A new instance of the class with the specified attributes.
+        """
+        if attrs_dict and attrs_dict != {}:
+            if cls.__name__ == "Rectangle":
+                new_instance = cls(1, 1)
+            else:
+                new_instance = cls(1)
+            new_instance.update(**attrs_dict)
+            return new_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """Load a list of objects from
+        a JSON file with the same name as the class.
+
+        Returns:
+            A list of objects instantiated from the JSON file.
+
+        If the file does not exist or cannot be opened,
+        an empty list is returned.
     """
-    if attrs_dict and attrs_dict != {}:
-        if cls.__name__ == "Rectangle":
-            new_instance = cls(1, 1)
-        else:
-            new_instance = cls(1)
-        new_instance.update(**attrs_dict)
-        return new_instance
+        filename = str(cls.__name__) + ".json"
+        try:
+            with open(filename, "r") as json_file:
+                list_dicts = Base.from_json_string(json_file.read())
+                return [cls.create(**attrs_dict) for attrs_dict in list_dicts]
+        except IOError:
+            return []
