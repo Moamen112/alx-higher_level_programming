@@ -35,3 +35,13 @@ class Square(Rectangle):
         """Return the string representation of a Square instance."""
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y,
                                                  self.width)
+
+    def update(self, *args, **kwargs):
+        """Update the Square attributes."""
+        if args:
+            attrs = ["id", "size", "x", "y"]
+            for attr, val in zip(attrs, args):
+                setattr(self, attr, val)
+        elif kwargs:
+            for key, val in kwargs.items():
+                setattr(self, key, val)
