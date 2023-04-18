@@ -4,26 +4,33 @@ from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """A class representing a square."""
+    """Represent a square."""
+
     def __init__(self, size, x=0, y=0, id=None):
-        """Initialize a Square instance.
+        """Initialize a new Square instance.
 
         Args:
             size (int): The size of the square.
-            x (int): The x-coordinate of the square's position.
-            y (int): The y-coordinate of the square's position.
-            id (int): An optional integer id.
+            x (int): The x coordinate of the square.
+            y (int): The y coordinate of the square.
+            id (int): The identity of the square.
 
         Attributes:
-            id (int): The public instance id attribute.
-            width (int): The public instance width attribute.
-            height (int): The public instance height attribute.
-            x (int): The public instance x attribute.
-            y (int): The public instance y attribute.
+            size (int): The size of the square.
         """
         super().__init__(size, size, x, y, id)
 
-    def __str__(self):
-        """Return a string representation of the Square instance."""
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
+    @property
+    def size(self):
+        """Get or set the size of the square."""
+        return self.width
 
+    @size.setter
+    def size(self, value):
+        """Set the size of the square."""
+        self.width = value
+        self.height = value
+
+    def __str__(self):
+        """Return the string representation of a Square instance."""
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
