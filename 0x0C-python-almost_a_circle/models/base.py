@@ -1,3 +1,11 @@
+#!/usr/bin/python3
+
+"""Defines a base model code class."""
+import json
+import csv
+import turtle
+
+
 class Base:
     """A class to manage the id attribute in all future classes."""
     __nb_objects = 0
