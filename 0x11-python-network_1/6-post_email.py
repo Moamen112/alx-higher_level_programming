@@ -4,14 +4,14 @@
 - sends a request to the URL and displays the value
 - of the X-Request-Id variable found in the header ofthe response.
 """
-import requests
 import sys
+import requests
 
-url = sys.argv[1]
-email = sys.argv[2]
+if __name__ == "__main__":
+    url = sys.argv[1]
 
-payload = {"email": email}
-response = requests.post(url, data=payload)
+    response = requests.get(url)
+    x_request_id = response.headers.get("X-Request-Id")
 
-print("Your email is:", email)
-print(response.text)
+    print(x_request_id)
+
